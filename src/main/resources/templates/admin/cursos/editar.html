@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sd="http://www.thymeleaf.org/spring-data"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{master.html}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Curso</title>
+</head>
+<body>
+<div layout:fragment="content">
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6">
+            <h1>Editar Curso</h1>
+
+            <form th:action="@{''}" method="post" th:object="${curso}" class="mt-2">
+                <div class="mb-2">
+                    <label for="nrc">NRC</label>
+                    <input type="text" id="nrc" th:field="*{nrc}" class="form-control" th:errorclass="is-invalid">
+
+                    <div class="invalid-feedback"
+                         th:errors="*{nrc}"
+                         th:if="${#fields.hasErrors('nrc')}"
+                    >
+                    </div>
+
+                </div>
+                <div class="mb-2">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" th:field="*{nombre}" class="form-control" th:errorclass="is-invalid">
+
+                    <div class="invalid-feedback"
+                         th:errors="*{nombre}"
+                         th:if="${#fields.hasErrors('nombre')}"
+                    >
+                    </div>
+
+                </div>
+
+                <div class="mb-2">
+                    <label for="descripcion">Descripción</label>
+                    <textarea name="descripcion" id="descripcion" cols="30" rows="5"
+                              th:field="*{descripcion}" class="form-control" th:errorclass="is-invalid"
+                    ></textarea>
+                    <div class="invalid-feedback"
+                         th:errors="*{descripcion}"
+                         th:if="${#fields.hasErrors('descripcion')}"
+                    >
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <label for="creditos">Créditos</label>
+                    <input type="number" id="creditos" th:field="*{creditos}" class="form-control" th:errorclass="is-invalid">
+
+                    <div class="invalid-feedback"
+                         th:errors="*{creditos}"
+                         th:if="${#fields.hasErrors('creditos')}"
+                    >
+                    </div>
+
+                </div>
+                <div class="mb-2">
+                    <label for="horas">Horas</label>
+                    <input type="number" id="horas" th:field="*{horas}" class="form-control" th:errorclass="is-invalid">
+
+                    <div class="invalid-feedback"
+                         th:errors="*{horas}"
+                         th:if="${#fields.hasErrors('horas')}"
+                    >
+                    </div>
+
+                </div>
+
+                <div class="mb-2">
+                    <label for="precio">Precio</label>
+                    <input type="number" id="precio" th:field="*{precio}" class="form-control" th:errorclass="is-invalid">
+
+                    <div class="invalid-feedback"
+                         th:errors="*{precio}"
+                         th:if="${#fields.hasErrors('precio')}"
+                    >
+                    </div>
+
+                </div>
+
+                <div class="mb-2">
+                    <label for="modalidad">Modalidad</label>
+                    <input type="text" id="modalidad" th:field="*{modalidad}" class="form-control" th:errorclass="is-invalid">
+
+                    <div class="invalid-feedback"
+                         th:errors="*{modalidad}"
+                         th:if="${#fields.hasErrors('modalidad')}"
+                    >
+                    </div>
+
+                </div>
+                <div class="mb-2">
+                    <label for="area">Área</label>
+                    <input type="text" id="area" th:field="*{area}" class="form-control" th:errorclass="is-invalid">
+
+                    <div class="invalid-feedback"
+                         th:errors="*{area}"
+                         th:if="${#fields.hasErrors('area')}"
+                    >
+                    </div>
+
+                </div>
+
+                <div class="text-end mt-3">
+                    <button class="btn btn-primary">Guardar</button>
+                    <a href="/admin/cursos" class="btn btn-light">Cancelar</a>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+</div>
+
+</body>
+</html>
