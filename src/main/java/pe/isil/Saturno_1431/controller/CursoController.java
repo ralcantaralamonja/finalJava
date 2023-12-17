@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pe.isil.Saturno_1431.model.Curso;
+import pe.isil.Saturno_1431.model.Inscripcion;
 import pe.isil.Saturno_1431.repository.CursoRepository;
+import pe.isil.Saturno_1431.repository.InscripcionRepository;
 
 import java.util.List;
 
@@ -22,7 +24,8 @@ import java.util.List;
 public class CursoController {
     @Autowired
     private CursoRepository cursoRepository; //DAO-Curso
-
+    @Autowired
+    private InscripcionRepository inscripcionRepository;
     @GetMapping("")
     String index(Model model){
         //obtener los ultimos 5 cursos creados
@@ -51,4 +54,11 @@ public class CursoController {
         model.addAttribute("curso", curso);
         return "detalle-curso";
     }
+    @GetMapping("/cursos/matriculados/{id}")
+    public String getMatriculados(@PathVariable Integer id, Model model){
+        List<Inscripcion> inscritos = inscripcionRepository.findByCurso_Id(id);
+        model.addAttribute("inscripciones", inscritos); // Cambio de "inscritos" a "inscripciones"
+        return "DetalleInscritos";
+    }
+
 }

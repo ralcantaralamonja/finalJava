@@ -1,80 +1,79 @@
 <!DOCTYPE html>
-<html lang="es"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{master.html}"
->
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{master.html}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
 
     <title>Registro de Notas</title>
 </head>
 
 <body>
-<div layout:fragment="content">
+<div layout:fragment="content" class="container mt-5">
     <div class="container mt-3">
         <div class="row justify-content-center">
             <div class="col-lg-4 col-md-6">
                 <h2>Registro de Notas</h2>
-    <form th:action="@{''}" method="post" th:object="${promedio}" class="mt-2">
-        <div class="mb-2">
-<label for="ep1">Ep1</label>
-            <input type="number" id="ep1" th:field="*{ep1}">
-<label for="ep2">Ep2</label>
-            <input type="number" id="ep2" th:field="*{ep2}">
-            <label for="ep2">Ep3</label>
-            <input type="number" id="ep3" th:field="*{ep3}">
-            <label for="ep2">Ep4</label>
-            <input type="number" id="ep4" th:field="*{ep4}">
-            <label for="parcial">Parcial</label>
-            <input type="number" id="parcial" th:field="*{parcial}">
-            <label for="finall">Final</label>
-            <input type="number" id="finall" th:field="*{finall}">
+                <form th:action="@{''}" method="post" th:object="${promedio}" class="mt-2">
+                    <div class="mb-2">
+                        <label for="ep1">EP1</label>
+                        <input type="number" id="ep1" th:field="*{ep1}" class="form-control">
+                        <label for="ep2">EP2</label>
+                        <input type="number" id="ep2" th:field="*{ep2}" class="form-control">
+                        <label for="ep3">EP3</label>
+                        <input type="number" id="ep3" th:field="*{ep3}" class="form-control">
+                        <label for="ep4">EP4</label>
+                        <input type="number" id="ep4" th:field="*{ep4}" class="form-control">
+                        <label for="parcial">Parcial</label>
+                        <input type="number" id="parcial" th:field="*{parcial}" class="form-control">
+                        <label for="final">Final</label>
+                        <input type="number" id="final" th:field="*{finall}" class="form-control">
 
-            <div class="text-end mt-3">
-                <button class="btn btn-primary">Calcular</button>
-
-            </div>
-        </div>
-
-    </form>
+                        <div class="text-end mt-3">
+                            <button class="btn btn-primary">Calcular</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
 
-<table>
-    <thead>
-    <tr class="fondo-primera-fila">
-        <th>Alumno</th>
-        <th>EP01</th>
-        <th>EP02</th>
-        <th>EP03</th>
-        <th>EP04</th>
-        <th>PARCIAL</th>
-        <th>FINAL</th>
-        <th>Promedio EP</th>
-        <th>Promedio Final</th>
-    </tr>
-    </thead>
-    <tbody>
-
-    <tr>
-        <td>Alumno 1</td>
-
-        <td><input type="number" class="nota-ep01" step="any" max="20"></td>
-        <td><input type="number" class="nota-ep02" step="any" max="20"></td>
-        <td><input type="number" class="nota-ep03" step="any" max="20"></td>
-        <td><input type="number" class="nota-ep04" step="any" max="20"></td>
-        <td><input type="number" class="nota-parcial" step="any" max="20"></td>
-        <td><input type="number" class="nota-final" step="any" max="20"></td>
-        <td class="promedio-ep"></td>
-        <td class="promedio-final"></td>
-    </tr>
-    </tbody>
-</table>
+    <h2 class="mb-4">Registro de Notas</h2>
+    <table class="table table-bordered table-sm">
+        <thead class="thead-dark">
+        <tr>
+            <th>Alumno</th>
+            <th>EP01</th>
+            <th>EP02</th>
+            <th>EP03</th>
+            <th>EP04</th>
+            <th>PARCIAL</th>
+            <th>FINAL</th>
+            <th>PROMEDIO</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Alumno 1</td>
+            <td><label></label></td>
+            <td><label></label></td>
+            <td><label></label></td>
+            <td><label></label></td>
+            <td><label></label></td>
+            <td><label></label></td>
+            <td class="promedio-final"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

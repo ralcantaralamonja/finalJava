@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detalles de inscritos</title>
+
+</head>
+<body>
+
+
+<table border="1">
+    <tr>
+        <th>NRC</th>
+        <th>Alumno</th>
+        <th>Calificar</th>
+    </tr>
+    <tr th:each="inscripcion : ${inscripciones}">
+
+        <td th:text="${inscripcion.curso.nrc}"></td>
+        <td th:text="${inscripcion.usuario.nombreCompleto}"></td>
+        <td><a th:href="@{/url}" class="btn btn-primary">Calificar</a></td>
+    </tr>
+</table>
+
+<!-- Otro contenido de la página -->
+</body>
+</html>
