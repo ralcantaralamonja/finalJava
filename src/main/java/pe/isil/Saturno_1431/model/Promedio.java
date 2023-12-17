@@ -2,10 +2,7 @@ package pe.isil.Saturno_1431.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -21,5 +18,10 @@ public class Promedio {
     private float parcial;
     private float finall;
     private float notafinal;
-
+    @ManyToOne
+    @JoinColumn(name="idusuario",referencedColumnName = "idusuario")
+    private Usuario usuario;
+    @ManyToOne
+    @JoinColumn(name = "idcurso", referencedColumnName = "id")
+    private Curso curso;
 }

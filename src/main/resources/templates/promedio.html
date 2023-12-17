@@ -31,6 +31,9 @@
                         <input type="number" id="parcial" th:field="*{parcial}" class="form-control">
                         <label for="final">Final</label>
                         <input type="number" id="final" th:field="*{finall}" class="form-control">
+                        <input type="hidden" id="idUsuario" th:value="${idusuario}" name="idUsuario" />
+                        <input type="hidden" id="idCurso" th:value="${idcurso}" name="idCurso" />
+
 
                         <div class="text-end mt-3">
                             <button class="btn btn-primary">Calcular</button>

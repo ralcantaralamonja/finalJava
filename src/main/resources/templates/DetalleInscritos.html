@@ -1,26 +1,43 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Detalles de inscritos</title>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de inscritos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
 </head>
+
 <body>
 
+<div class="container mt-5">
+<!--    <h2 th:text="'Alumnos Matriculados - ' + ${inscripciones.curso.nombre}"></h2> -->
 
-<table border="1">
-    <tr>
-        <th>NRC</th>
-        <th>Alumno</th>
-        <th>Calificar</th>
-    </tr>
-    <tr th:each="inscripcion : ${inscripciones}">
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>NRC</th>
+            <th>Alumno</th>
+            <th>Calificar</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="inscripcion : ${inscripciones}">
+            <td th:text="${inscripcion.curso.nrc}"></td>
+            <td th:text="${inscripcion.usuario.nombreCompleto}"></td>
 
-        <td th:text="${inscripcion.curso.nrc}"></td>
-        <td th:text="${inscripcion.usuario.nombreCompleto}"></td>
-        <td><a th:href="@{/url}" class="btn btn-primary">Calificar</a></td>
-    </tr>
-</table>
+            <td>
+                <a th:href="@{'/promedio?idUsuario=' + ${inscripcion.usuario.id} + '&idCurso=' + ${inscripcion.curso.id}}" class="btn btn-primary">Calificar</a>
+            </td>
 
-<!-- Otro contenido de la página -->
+        </tr>
+        </tbody>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
+
 </html>

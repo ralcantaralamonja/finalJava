@@ -6,9 +6,15 @@ import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import pe.isil.Saturno_1431.model.Curso;
 import pe.isil.Saturno_1431.model.Promedio;
+import pe.isil.Saturno_1431.model.Usuario;
+import pe.isil.Saturno_1431.repository.CursoRepository;
 import pe.isil.Saturno_1431.repository.PromedioRepository;
+import pe.isil.Saturno_1431.repository.UsuarioRepository;
 
+import java.util.Optional;
 import java.util.logging.Logger;
 
 
@@ -17,23 +23,49 @@ import java.util.logging.Logger;
 public class PromedioController {
     @Autowired
     PromedioRepository promedioRepository;
-
+    @Autowired
+    UsuarioRepository usuarioRepository;
+    @Autowired
+    CursoRepository cursoRepository;
     @GetMapping("/promedio")
     public String InsertarNotas(Model model){
         model.addAttribute("promedio",new Promedio());
         return "promedio";
     }
     @PostMapping("/promedio")
-    public String Calcular(Model model , @Validated Promedio promedio){
-        float promEps =( (promedio.getEp1() + promedio.getEp2()+promedio.getEp3()+promedio.getEp4() ) /4);
-        promedio.setPromedio_ep(promEps);
-         float promtotal = (promedio.getEp1() + promedio.getEp2() + promedio.getEp3() +
-                promedio.getEp4()+ (promedio.getParcial() * 3) + (promedio.getFinall()*3))/10;
-        promedio.setNotafinal(promtotal);
-        System.out.println("El promedio de eps es "+promedio.getPromedio_ep() );
-        System.out.println("El promedio es "+promedio.getNotafinal());
-        promedioRepository.save(promedio);
+    public String calcular(Model model,
+                           @Validated Promedio promedio,
+                           @RequestParam("idUsuario") Integer idUsuario,
+                           @RequestParam("idCurso") Integer idCurso) {
+        // Cargar Usuario y Curso desde la base de datos utilizando los IDs
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(idUsuario);
+        Optional<Curso> cursoOptional = cursoRepository.findById(idCurso);
+
+        if (usuarioOptional.isPresent() && cursoOptional.isPresent()) {
+            Usuario usuario = usuarioOptional.get();
+            Curso curso = cursoOptional.get();
+
+            // Establecer Usuario y Curso en el objeto Promedio
+            promedio.setUsuario(usuario);
+            promedio.setCurso(curso);
+
+            // Calcular promedios
+            float promEps = (promedio.getEp1() + promedio.getEp2() + promedio.getEp3() + promedio.getEp4()) / 4;
+            promedio.setPromedio_ep(promEps);
+
+            float promTotal = (promedio.getEp1() + promedio.getEp2() + promedio.getEp3() +
+                    promedio.getEp4() + (promedio.getParcial() * 3) + (promedio.getFinall() * 3)) / 10;
+            promedio.setNotafinal(promTotal);
+
+            // Guardar el objeto Promedio con las asociaciones de Usuario y Curso
+            promedioRepository.save(promedio);
+        } else {
+            // Manejo de error si no se encuentran Usuario o Curso
+            // Puedes redirigir a una página de error o realizar alguna acción apropiada
+        }
+
         return "redirect:/promedio";
     }
+
 
 }

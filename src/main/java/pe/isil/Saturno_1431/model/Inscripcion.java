@@ -21,7 +21,6 @@ public class Inscripcion {
     @ManyToOne
     @JoinColumn(name = "idcurso", referencedColumnName = "id")
     private Curso curso;
-
     private LocalDateTime fechaInscripcion;
 
 }
