@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Notas de Alumnos</title>
+</head>
+
+<body>
+<div class="container mt-5">
+    <h2>Detalle de Notas </h2>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>NRC</th>
+            <th>Alumno</th>
+            <th>Ep1</th>
+            <th>Ep2</th>
+            <th>Ep3</th>
+            <th>Ep4</th>
+            <th>Promedio Ep</th>
+            <th>Parcial</th>
+            <th>Final</th>
+            <th>Nota final</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="promedio : ${promedios}"> <!-- Usa el nombre correcto del modelo -->
+            <td th:text="${promedio.curso.nrc}"></td>
+            <td th:text="${promedio.usuario.nombreCompleto}"></td>
+            <td th:text="${promedio.ep1}"></td>
+            <td th:text="${promedio.ep2}"></td>
+            <td th:text="${promedio.ep3}"></td>
+            <td th:text="${promedio.ep4}"></td>
+            <td th:text="${promedio.promedio_ep}"></td>
+            <td th:text="${promedio.parcial}"></td>
+            <td th:text="${promedio.finall}"></td>
+            <td th:text="${promedio.notafinal}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -12,6 +12,8 @@
 
 <div class="container mt-5">
 <!--    <h2 th:text="'Alumnos Matriculados - ' + ${inscripciones.curso.nombre}"></h2> -->
+    <h2>Alumnos Matriculados</h2>
+
 
     <table class="table table-bordered">
         <thead class="thead-dark">
@@ -33,11 +35,13 @@
         </tr>
         </tbody>
     </table>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <div class="container">
+    <a th:href="@{/detalle}" class="btn btn-primary center">VER NOTAS</a>
+    </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+</div>
 </body>
 
 </html>

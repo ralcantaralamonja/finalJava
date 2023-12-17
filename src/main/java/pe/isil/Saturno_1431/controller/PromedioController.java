@@ -14,6 +14,7 @@ import pe.isil.Saturno_1431.repository.CursoRepository;
 import pe.isil.Saturno_1431.repository.PromedioRepository;
 import pe.isil.Saturno_1431.repository.UsuarioRepository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -67,5 +68,12 @@ public class PromedioController {
         return "redirect:/promedio";
     }
 
+    @GetMapping("/detalle")
+    public String mostrarNotas(Model model) {
+        List<Promedio> promedios = promedioRepository.findAll();
+        model.addAttribute("promedios", promedios); // Asegúrate de usar el nombre correcto
+
+        return "DetalleNotas"; // Nombre más descriptivo para la vista
+    }
 
 }
