@@ -16,7 +16,14 @@
 <div layout:fragment="content">
 
 <div class="container mt-5">
-<!--    <h1 th:text="${promedios.curso.nrc}">  </h1>-->
+
+    <div th:if="${promedios}">
+        <h1>
+            Detalle de notas del curso : <span th:text="${promedios[0].curso != null ? promedios[0].curso.nombre : 'Nombre no encontrado'}"></span>
+        </h1>
+    </div>
+
+
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
         <tr>

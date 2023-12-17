@@ -15,7 +15,12 @@
 <div layout:fragment="content">
 <div class="container mt-5">
 <!--    <h2 th:text="'Alumnos Matriculados - ' + ${inscripciones.curso.nombre}"></h2> -->
-    <h2>Alumnos Matriculados</h2>
+    <div th:if="${inscripciones}">
+        <h1>
+            Alumnos del curso : <span th:text="${inscripciones[0].curso != null ? inscripciones[0].curso.nombre : 'Nombre no encontrado'}"></span>
+        </h1>
+    </div>
+
 
 
     <table class="table table-bordered">
