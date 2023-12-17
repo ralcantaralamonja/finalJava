@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pe.isil.Saturno_1431.model.Curso;
@@ -68,9 +69,9 @@ public class PromedioController {
         return "redirect:/promedio";
     }
 
-    @GetMapping("/detalle")
-    public String mostrarNotas(Model model) {
-        List<Promedio> promedios = promedioRepository.findAll();
+    @GetMapping("/detalle/{id}")
+    public String mostrarNotas(@PathVariable Integer id ,Model model) {
+        List<Promedio> promedios = promedioRepository.findByCurso_Id(id);
         model.addAttribute("promedios", promedios); // Asegúrate de usar el nombre correcto
 
         return "DetalleNotas"; // Nombre más descriptivo para la vista
