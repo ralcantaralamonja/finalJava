@@ -1,15 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{master.html}"
+      xmlns:sd="http://www.thymeleaf.org/spring-data"
+>
 
 <head>
     <meta charset="UTF-8">
     <title>Notas de Alumnos</title>
+    <!-- Agrega el enlace al archivo CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
+<div layout:fragment="content">
+
 <div class="container mt-5">
-    <h2>Detalle de Notas </h2>
-    <table class="table table-bordered">
+    <h2>Detalle de Notas</h2>
+    <table class="table table-bordered table-striped">
         <thead class="thead-dark">
         <tr>
             <th>NRC</th>
@@ -18,15 +26,14 @@
             <th>Ep2</th>
             <th>Ep3</th>
             <th>Ep4</th>
-            <th>Promedio Ep</th>
+            <th>Pro_Ep</th>
             <th>Parcial</th>
             <th>Final</th>
             <th>Nota final</th>
-
         </tr>
         </thead>
         <tbody>
-        <tr th:each="promedio : ${promedios}"> <!-- Usa el nombre correcto del modelo -->
+        <tr th:each="promedio : ${promedios}">
             <td th:text="${promedio.curso.nrc}"></td>
             <td th:text="${promedio.usuario.nombreCompleto}"></td>
             <td th:text="${promedio.ep1}"></td>
@@ -37,14 +44,15 @@
             <td th:text="${promedio.parcial}"></td>
             <td th:text="${promedio.finall}"></td>
             <td th:text="${promedio.notafinal}"></td>
-
         </tr>
         </tbody>
     </table>
 </div>
-
+</div>
+<!-- Agrega los scripts de Bootstrap y jQuery al final del body -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
